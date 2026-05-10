@@ -31,13 +31,10 @@
 ### 📝 6. Interactive E-Prescription Form
 <img width="1919" height="1001" alt="Image" src="https://github.com/user-attachments/assets/bd78032d-ea82-4b13-a1a9-5368372cc11a" />
 
-### 📹 4. WebRTC Video Consultation Room
 <img width="1919" height="997" alt="Image" src="https://github.com/user-attachments/assets/abff9a55-b973-445b-951e-0164d648db5c" />
 
-### 💳 8. Patient Billing & Service Payment
 <img width="1918" height="996" alt="Image" src="https://github.com/user-attachments/assets/56eba5cf-c38c-4c4a-b88b-9185c8436a59" />
 
-### 📊 9. Admin Dashboard & Statistics
 <img width="1918" height="1003" alt="Image" src="https://github.com/user-attachments/assets/abf91c8f-6bd5-4312-857f-a503f9b60f05" />
 
 ### 👨‍⚕️ 10. Admin: Doctor Verification
