@@ -9,9 +9,8 @@
 - **Authentication:** JWT (JSON Web Tokens)
 - **Real-Time Video:** WebRTC & Socket.io for Video Consultations
 
-## 📸 Screenshots Gallery
+## 📸
 
-<!-- ضع الروابط التي نسختها من GitHub هنا بالأسفل 👇 -->
 
 ### 🔐 1. Modern Authentication & Login
 <img width="1917" height="990" alt="Image" src="https://github.com/user-attachments/assets/88c25898-d200-41fe-b4ae-9abd896dc094" />
@@ -55,7 +54,6 @@
 ### 📱 14. Responsive Layouts & Tables
 <img width="1919" height="1004" alt="Image" src="https://github.com/user-attachments/assets/62b59f5a-1bcc-4cd6-bbb0-748e4bad4501" />
 
-<!-- ضع الروابط التي نسختها من GitHub هنا بالأعلى ☝️ -->
 
 ## Features
 
@@ -449,26 +447,9 @@ npm run dev
 
 ---
 
-## 📞 Support
 
-For issues or questions:
-1. Check troubleshooting section above
-2. Review backend logs in terminal
-3. Check browser console (F12)
-4. Verify all environment variables are correct
-
----
-
-## 📄 License
-
-This is a school project for educational purposes.
-
----
-
-## 👥 Team
+## 👥 HCIS Team2
 
 Built with ❤️ as a complete MERN stack healthcare solution.
 
 ---
-
-**Happy coding! 🚀**
