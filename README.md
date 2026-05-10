@@ -30,7 +30,7 @@
 ### 📝 6. Interactive E-Prescription Form
 <img width="1919" height="1001" alt="Image" src="https://github.com/user-attachments/assets/bd78032d-ea82-4b13-a1a9-5368372cc11a" />
 
-### 📋 7. Clinical Medical Record Form
+### 📹 4. WebRTC Video Consultation Room
 <img width="1919" height="997" alt="Image" src="https://github.com/user-attachments/assets/abff9a55-b973-445b-951e-0164d648db5c" />
 
 ### 💳 8. Patient Billing & Service Payment
