@@ -23,7 +23,6 @@
 
 <img width="1919" height="998" alt="Image" src="https://github.com/user-attachments/assets/79b9a1aa-799b-457f-b7c8-82b60b83db44" />
 
-### 📹 4. WebRTC Video Consultation Room
 <img width="1919" height="995" alt="Image" src="https://github.com/user-attachments/assets/bfbfbf5c-db77-47ff-9fb9-6eba123ebb1d" />
 
 📊 9. Admin Dashboard & Statistics
