@@ -25,7 +25,7 @@
 ### 📹 4. WebRTC Video Consultation Room
 <img width="1919" height="995" alt="Image" src="https://github.com/user-attachments/assets/bfbfbf5c-db77-47ff-9fb9-6eba123ebb1d" />
 
-### 🩺 5. Doctor Dashboard Overview
+📊 9. Admin Dashboard & Statistics
 <img width="1919" height="996" alt="Image" src="https://github.com/user-attachments/assets/438d61fd-bcc2-452e-8425-b7e90a12d35c" />
 
 ### 📝 6. Interactive E-Prescription Form
