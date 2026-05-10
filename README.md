@@ -76,7 +76,7 @@
 - ✅ Generate Reports
 - ✅ Monitor Appointments
 
-### Bonus Features
+
 - ✅ **WebRTC Video Consultations** (Custom Peer-to-Peer Video Calls & Screen Sharing)
 - ✅ **Premium UI/UX** (Glassmorphism, Dynamic Gradients, Custom Animations)
 - ✅ **Interactive Clinical Forms** (Symptom Tagging, Dynamic Patient Search)
