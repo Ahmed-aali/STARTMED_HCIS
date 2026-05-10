@@ -18,6 +18,7 @@ import MyAppointments from './pages/Patient/MyAppointments';
 import MedicalRecords from './pages/Patient/MedicalRecords';
 import Prescriptions from './pages/Patient/Prescriptions';
 import Bills from './pages/Patient/Bills';
+import ServicePayment from './pages/Patient/ServicePayment';
 import PatientProfile from './pages/Patient/PatientProfile';
 
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
@@ -33,6 +34,7 @@ import ManageUsers from './pages/Admin/ManageUsers';
 import ManageBills from './pages/Admin/ManageBills';
 import AdminAppointments from './pages/Admin/AdminAppointments';
 import AdminDoctors from './pages/Admin/AdminDoctors';
+import VideoConsultation from './pages/Consultation/VideoConsultation';
 
 import './styles/global.css';
 import './styles/auth.css';
@@ -132,6 +134,23 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute requiredRole="patient">
             <Bills />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/patient/services"
+        element={
+          <ProtectedRoute requiredRole="patient">
+            <ServicePayment />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/consultation/:roomId"
+        element={
+          <ProtectedRoute>
+            <VideoConsultation />
           </ProtectedRoute>
         }
       />

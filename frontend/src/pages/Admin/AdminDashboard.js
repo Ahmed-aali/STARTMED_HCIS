@@ -4,6 +4,10 @@ import Sidebar from '../../components/Sidebar';
 import Alert from '../../components/Alert';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { adminService } from '../../services/apiService';
+import {
+  PieChart, Pie, Cell, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer
+} from 'recharts';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -83,7 +87,7 @@ const AdminDashboard = () => {
               <div style={statStyle}>
                 <div style={statCardStyle}>
                   <h3>Total Revenue</h3>
-                  <div style={statNumberStyle}>₹{stats.totalRevenue}</div>
+                  <div style={statNumberStyle}>${stats.totalRevenue.toLocaleString()}</div>
                 </div>
                 <div style={statCardStyle}>
                   <h3>Pending Appointments</h3>
@@ -93,6 +97,61 @@ const AdminDashboard = () => {
                   <h3>Completed Appointments</h3>
                   <div style={statNumberStyle}>{stats.completedAppointments}</div>
                 </div>
+              </div>
+
+              {/* Charts Section */}
+              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '40px' }}>
+                
+                {/* Appointment Status Pie Chart */}
+                <div style={{ flex: 1, minWidth: '300px', background: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                  <h3 style={{ textAlign: 'center', color: '#334155', marginBottom: '20px' }}>Appointments Overview</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={[
+                          { name: 'Pending', value: stats.pendingAppointments },
+                          { name: 'Completed', value: stats.completedAppointments },
+                          { name: 'Other', value: stats.totalAppointments - (stats.pendingAppointments + stats.completedAppointments) }
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={100}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        <Cell fill="#f59e0b" />
+                        <Cell fill="#10b981" />
+                        <Cell fill="#ef4444" />
+                      </Pie>
+                      <Tooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+
+                {/* Users Overview Bar Chart */}
+                <div style={{ flex: 1, minWidth: '400px', background: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+                  <h3 style={{ textAlign: 'center', color: '#334155', marginBottom: '20px' }}>Platform Users & Activity</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart
+                      data={[
+                        { name: 'Patients', count: stats.totalPatients },
+                        { name: 'Doctors', count: stats.totalDoctors },
+                        { name: 'Appointments', count: Math.min(stats.totalAppointments, 100) }, // scaled for viz
+                        { name: 'Bills', count: Math.min(stats.totalBills, 100) }
+                      ]}
+                      margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="name" axisLine={false} tickLine={false} />
+                      <YAxis axisLine={false} tickLine={false} />
+                      <Tooltip cursor={{ fill: '#f1f5f9' }} />
+                      <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={40} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+
               </div>
             </>
           )}

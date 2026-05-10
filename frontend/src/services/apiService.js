@@ -54,6 +54,9 @@ export const billService = {
   getPatientBills: (patientId) => api.get(`/bills/patient/${patientId}`),
   recordPayment: (id, data) => api.put(`/bills/${id}/pay`, data),
   getAllBills: () => api.get('/bills/all'),
+  getServiceCatalog: () => api.get('/bills/services'),
+  submitServicePayment: (data) => api.post('/bills/service-payment', data),
+  verifyPayment: (id, data) => api.put(`/bills/${id}/verify`, data),
 };
 
 export const adminService = {
@@ -62,4 +65,5 @@ export const adminService = {
   deleteUser: (id) => api.delete(`/admin/users/${id}`),
   updateUserStatus: (id, data) => api.put(`/admin/users/${id}`, data),
   getReports: () => api.get('/admin/reports'),
+  verifyDoctor: (id, data) => api.put(`/admin/doctors/${id}/verify`, data),
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Alert from '../../components/Alert';
@@ -9,6 +10,7 @@ const MyAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAppointments();
@@ -80,6 +82,15 @@ const MyAppointments = () => {
                       </span>
                     </td>
                     <td>
+                      {app.status === 'Confirmed' && (
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => navigate(`/consultation/${app._id}?apt=${app._id}`)}
+                          style={{ marginRight: '8px' }}
+                        >
+                          📹 Join Video Call
+                        </button>
+                      )}
                       {app.status === 'Pending' && (
                         <button
                           className="btn btn-danger"

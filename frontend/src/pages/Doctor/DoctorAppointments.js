@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Alert from '../../components/Alert';
@@ -6,6 +7,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import { appointmentService } from '../../services/apiService';
 
 const DoctorAppointments = () => {
+  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -260,6 +262,21 @@ const DoctorAppointments = () => {
                             )}
                             {app.status === 'Confirmed' && (
                               <>
+                                <button
+                                  onClick={() => navigate(`/consultation/${app._id}?apt=${app._id}`)}
+                                  style={{
+                                    padding: '6px 12px',
+                                    background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    fontSize: '12px',
+                                    fontWeight: '600',
+                                  }}
+                                >
+                                  📹 Start Call
+                                </button>
                                 <button
                                   onClick={() => {
                                     setSelectedAppointment(app);

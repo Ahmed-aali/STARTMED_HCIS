@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Alert from '../../components/Alert';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import { doctorService } from '../../services/apiService';
+import { doctorService, adminService } from '../../services/apiService';
 
 const AdminDoctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -45,6 +45,17 @@ const AdminDoctors = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleVerifyToggle = async (doctorId, currentStatus) => {
+    try {
+      await adminService.verifyDoctor(doctorId, { isVerified: !currentStatus });
+      setSuccessMessage(`Doctor ${!currentStatus ? 'verified' : 'unverified'} successfully`);
+      fetchDoctors();
+      setTimeout(() => setSuccessMessage(''), 3000);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update doctor status');
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -314,10 +325,27 @@ const AdminDoctors = () => {
                             backgroundColor: doctor.isVerified ? '#d4edda' : '#fff3cd',
                             color: doctor.isVerified ? '#155724' : '#856404',
                             fontSize: '12px',
+                            marginRight: '10px'
                           }}
                         >
                           {doctor.isVerified ? 'Verified' : 'Pending'}
                         </span>
+                        
+                        <button
+                          onClick={() => handleVerifyToggle(doctor._id, doctor.isVerified)}
+                          style={{
+                            padding: '4px 8px',
+                            backgroundColor: doctor.isVerified ? '#e53e3e' : '#38a169',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '12px',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          {doctor.isVerified ? 'Revoke Verification' : 'Verify Doctor'}
+                        </button>
                       </div>
                     </div>
                   </div>

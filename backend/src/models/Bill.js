@@ -49,10 +49,19 @@ const billSchema = new mongoose.Schema(
     },
     paymentStatus: {
       type: String,
-      enum: ['Unpaid', 'Partial', 'Paid'],
+      enum: ['Unpaid', 'Partial', 'Paid', 'Pending Verification'],
       default: 'Unpaid',
     },
     paymentDate: Date,
+    paymentMethod: {
+      type: String,
+      enum: ['Cash', 'Credit Card', 'Bank Transfer', 'Insurance', 'Other'],
+      default: 'Cash',
+    },
+    paymentReceipt: {
+      type: String, // base64-encoded image of the payment receipt
+      default: null,
+    },
     notes: String,
     dueDate: Date,
   },

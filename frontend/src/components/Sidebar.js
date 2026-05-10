@@ -13,6 +13,7 @@ const Sidebar = () => {
     { path: '/patient/book-appointment', label: 'Book Appointment', icon: '➕' },
     { path: '/patient/medical-records', label: 'Medical Records', icon: '📋' },
     { path: '/patient/prescriptions', label: 'Prescriptions', icon: '💊' },
+    { path: '/patient/services', label: 'Services & Payment', icon: '🏥' },
     { path: '/patient/bills', label: 'Bills & Payments', icon: '💳' },
   ];
 

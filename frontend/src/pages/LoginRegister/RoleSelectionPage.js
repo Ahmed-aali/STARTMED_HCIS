@@ -19,13 +19,6 @@ const RoleSelectionPage = () => {
       icon: '👨‍⚕️',
       color: '#2ecc71',
     },
-    {
-      id: 'admin',
-      title: 'Administrator',
-      description: 'Manage users, doctors, and system settings',
-      icon: '🔒',
-      color: '#e74c3c',
-    },
   ];
 
   return (

@@ -5,6 +5,7 @@ const {
   deleteUser,
   updateUserStatus,
   generateReports,
+  verifyDoctor,
 } = require('../controllers/adminController');
 const { protect, authorize } = require('../middleware/auth');
 
@@ -15,5 +16,6 @@ router.get('/users', protect, authorize('admin'), getAllUsers);
 router.get('/reports', protect, authorize('admin'), generateReports);
 router.delete('/users/:id', protect, authorize('admin'), deleteUser);
 router.put('/users/:id', protect, authorize('admin'), updateUserStatus);
+router.put('/doctors/:id/verify', protect, authorize('admin'), verifyDoctor);
 
 module.exports = router;

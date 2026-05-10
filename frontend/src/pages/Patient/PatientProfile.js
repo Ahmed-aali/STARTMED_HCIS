@@ -256,7 +256,6 @@ const PatientProfile = () => {
           <select name={name} value={formData[name]} onChange={handleChange} style={selectStyle}>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Other">Other</option>
           </select>
         ) : type === 'select-blood' ? (
           <select name={name} value={formData[name]} onChange={handleChange} style={selectStyle}>

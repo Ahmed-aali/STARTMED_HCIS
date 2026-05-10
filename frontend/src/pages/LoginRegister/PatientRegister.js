@@ -10,6 +10,7 @@ const PatientRegister = () => {
     firstName: '',
     lastName: '',
     phone: '',
+    profileImage: null,
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,24 @@ const PatientRegister = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+        setError('Profile image must be less than 2MB');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({
+          ...prev,
+          profileImage: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -98,6 +117,24 @@ const PatientRegister = () => {
               required
               placeholder="Enter your phone number"
             />
+          </div>
+
+          <div className="form-group">
+            <label>Profile Picture (Optional)</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="form-control"
+              style={{ padding: '8px' }}
+            />
+            {formData.profileImage && (
+              <img 
+                src={formData.profileImage} 
+                alt="Preview" 
+                style={{ width: '80px', height: '80px', borderRadius: '50%', marginTop: '10px', objectFit: 'cover' }} 
+              />
+            )}
           </div>
 
           <div className="form-group">

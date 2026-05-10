@@ -9,7 +9,7 @@ const { validateEmail, validatePassword, validatePhone, validateName } = require
 // @desc    Register a new user
 // @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
-  const { email, password, firstName, lastName, phone, role } = req.body;
+  const { email, password, firstName, lastName, phone, role, profileImage } = req.body;
 
   // Validation
   if (!validateEmail(email)) {
@@ -39,6 +39,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     lastName,
     phone,
     role: role || 'patient',
+    profileImage: profileImage || null,
   });
 
   await user.save();
@@ -54,6 +55,7 @@ exports.register = asyncHandler(async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       role: user.role,
+      profileImage: user.profileImage,
     },
   });
 });
@@ -92,6 +94,7 @@ exports.login = asyncHandler(async (req, res, next) => {
       firstName: user.firstName,
       lastName: user.lastName,
       role: user.role,
+      profileImage: user.profileImage,
     },
   });
 });

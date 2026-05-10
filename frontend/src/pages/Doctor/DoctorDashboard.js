@@ -4,10 +4,12 @@ import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Alert from '../../components/Alert';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import { doctorService } from '../../services/apiService';
+import { doctorService, appointmentService } from '../../services/apiService';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
 
 const DoctorDashboard = () => {
   const [profile, setProfile] = useState(null);
+  const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -18,8 +20,11 @@ const DoctorDashboard = () => {
 
   const fetchProfile = async () => {
     try {
-      const res = await doctorService.getMyProfile();
-      setProfile(res.data.data);
+      const profileRes = await doctorService.getMyProfile();
+      setProfile(profileRes.data.data);
+      
+      const aptRes = await appointmentService.getMyAppointments();
+      setAppointments(aptRes.data.data || []);
     } catch (err) {
       if (err.response?.status === 404) {
         navigate('/doctor/register-profile');
@@ -77,6 +82,23 @@ const DoctorDashboard = () => {
     fontWeight: '600',
   };
 
+  // Calculate dynamic stats
+  const pendingAppointments = appointments.filter(a => a.status === 'Pending').length;
+  const completedAppointments = appointments.filter(a => a.status === 'Completed').length;
+  const uniquePatients = new Set(appointments.map(a => a.patientId?._id)).size;
+
+  // Process data for AreaChart (appointments by date)
+  const appointmentTrends = appointments.reduce((acc, app) => {
+    const date = new Date(app.appointmentDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    acc[date] = (acc[date] || 0) + 1;
+    return acc;
+  }, {});
+  
+  const areaChartData = Object.keys(appointmentTrends).map(date => ({
+    date,
+    count: appointmentTrends[date]
+  })).sort((a, b) => new Date(a.date) - new Date(b.date));
+
   return (
     <div>
       <Navbar />
@@ -114,16 +136,68 @@ const DoctorDashboard = () => {
                     <div style={{ fontSize: '12px', color: '#666' }}>Years</div>
                   </div>
                   <div style={statCardStyle}>
-                    <div style={{ fontSize: '12px', color: '#667eea', fontWeight: '600' }}>CONSULTATION FEE</div>
-                    <div style={statNumberStyle}>₹{profile.consultationFee}</div>
-                    <div style={{ fontSize: '12px', color: '#666' }}>Per Appointment</div>
+                    <div style={{ fontSize: '12px', color: '#667eea', fontWeight: '600' }}>TOTAL PATIENTS</div>
+                    <div style={statNumberStyle}>{uniquePatients}</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>Unique</div>
                   </div>
                   <div style={statCardStyle}>
-                    <div style={{ fontSize: '12px', color: '#667eea', fontWeight: '600' }}>LICENSE</div>
-                    <div style={{ fontSize: '12px', color: '#333', fontWeight: '600', marginTop: '10px', wordBreak: 'break-all' }}>
-                      {profile.licenseNumber}
-                    </div>
+                    <div style={{ fontSize: '12px', color: '#667eea', fontWeight: '600' }}>CONSULTATIONS</div>
+                    <div style={statNumberStyle}>{completedAppointments}</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>Completed</div>
                   </div>
+                </div>
+              </div>
+
+              {/* Charts Section */}
+              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '30px' }}>
+                <div style={{ flex: 2, minWidth: '400px', ...headerCardStyle, borderLeft: 'none', marginBottom: 0 }}>
+                  <h3 style={{ marginTop: 0, color: '#333', marginBottom: '20px' }}>Appointment Trends</h3>
+                  {areaChartData.length > 0 ? (
+                    <ResponsiveContainer width="100%" height={250}>
+                      <AreaChart data={areaChartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#667eea" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="#667eea" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
+                        <XAxis dataKey="date" axisLine={false} tickLine={false} />
+                        <YAxis axisLine={false} tickLine={false} />
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <RechartsTooltip />
+                        <Area type="monotone" dataKey="count" stroke="#667eea" fillOpacity={1} fill="url(#colorCount)" />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <p style={{ color: '#94a3b8', textAlign: 'center', marginTop: '40px' }}>No appointment data available yet.</p>
+                  )}
+                </div>
+
+                <div style={{ flex: 1, minWidth: '250px', ...headerCardStyle, borderLeft: 'none', marginBottom: 0 }}>
+                  <h3 style={{ marginTop: 0, color: '#333', marginBottom: '20px' }}>Status Overview</h3>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <PieChart>
+                      <Pie
+                        data={[
+                          { name: 'Pending', value: pendingAppointments },
+                          { name: 'Completed', value: completedAppointments },
+                          { name: 'Other', value: appointments.length - (pendingAppointments + completedAppointments) }
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={50}
+                        outerRadius={80}
+                        paddingAngle={5}
+                        dataKey="value"
+                      >
+                        <Cell fill="#f59e0b" />
+                        <Cell fill="#10b981" />
+                        <Cell fill="#ef4444" />
+                      </Pie>
+                      <RechartsTooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
 

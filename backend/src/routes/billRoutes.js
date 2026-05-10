@@ -7,10 +7,22 @@ const {
   updateBill,
   recordPayment,
   getAllBills,
+  getServiceCatalog,
+  submitServicePayment,
+  verifyPayment,
 } = require('../controllers/billController');
 const { protect, authorize } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Service catalog (public for patients)
+router.get('/services', protect, getServiceCatalog);
+
+// Patient submits a service order with payment receipt
+router.post('/service-payment', protect, authorize('patient'), submitServicePayment);
+
+// Admin verifies/rejects a payment
+router.put('/:id/verify', protect, authorize('admin'), verifyPayment);
 
 router.post('/', protect, authorize('admin'), createBill);
 router.get('/my-bills', protect, authorize('patient'), getMyBills);

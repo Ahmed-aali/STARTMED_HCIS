@@ -37,7 +37,16 @@ const Navbar = () => {
               <div className="navbar-user-name">{user.firstName} {user.lastName}</div>
               <div className="navbar-user-role">{user.role}</div>
             </div>
-            <div className="navbar-avatar">{getInitials()}</div>
+            {user.profileImage ? (
+              <img 
+                src={user.profileImage} 
+                alt={`${user.firstName}'s avatar`} 
+                className="navbar-avatar" 
+                style={{ objectFit: 'cover', width: '40px', height: '40px', borderRadius: '50%', padding: 0 }} 
+              />
+            ) : (
+              <div className="navbar-avatar">{getInitials()}</div>
+            )}
           </div>
         )}
         <button className="navbar-logout" onClick={handleLogout}>

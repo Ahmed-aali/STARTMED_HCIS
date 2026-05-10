@@ -92,6 +92,28 @@ exports.updateUserStatus = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   PUT /api/admin/doctors/:id/verify
+// @desc    Verify or unverify a doctor
+// @access  Private/Admin
+exports.verifyDoctor = asyncHandler(async (req, res, next) => {
+  const { isVerified } = req.body;
+
+  const doctor = await Doctor.findByIdAndUpdate(
+    req.params.id,
+    { isVerified },
+    { new: true, runValidators: true }
+  ).populate('userId', 'firstName lastName email');
+
+  if (!doctor) {
+    return next(new ErrorHandler('Doctor not found', 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: doctor,
+  });
+});
+
 // @route   GET /api/admin/reports
 // @desc    Generate reports
 // @access  Private/Admin

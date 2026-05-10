@@ -14,7 +14,7 @@ const patientSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ['Male', 'Female', 'Other'],
+      enum: ['Male', 'Female'],
       required: true,
     },
     bloodGroup: {
