@@ -37,10 +37,8 @@
 
 <img width="1918" height="1003" alt="Image" src="https://github.com/user-attachments/assets/abf91c8f-6bd5-4312-857f-a503f9b60f05" />
 
-### 👨‍⚕️ 10. Admin: Doctor Verification
 <img width="1919" height="986" alt="Image" src="https://github.com/user-attachments/assets/b9c2802e-e252-4cb7-9af1-a03bff5f89b9" />
 
-### 💬 11. Intelligent Chatbot Assistant
 <img width="1919" height="995" alt="Image" src="https://github.com/user-attachments/assets/9d297377-68f1-43f1-95c9-757490711b40" />
 
 ### ⚙️ 12. User Profile Management
