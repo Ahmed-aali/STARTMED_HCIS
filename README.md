@@ -12,7 +12,7 @@
 ## 📸
 
 
-### 🔐 1. Modern Authentication & Login
+💳 8. Patient Billing & Service Payment
 <img width="1917" height="990" alt="Image" src="https://github.com/user-attachments/assets/88c25898-d200-41fe-b4ae-9abd896dc094" />
 
 ### 🧑‍💼 2. Patient Dashboard Overview
