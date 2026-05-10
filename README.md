@@ -50,10 +50,10 @@
 ### ⚙️ 12. User Profile Management
 <img width="1919" height="994" alt="Image" src="https://github.com/user-attachments/assets/c730633a-3709-4d31-a313-f25c4d9b6435" />
 
-### 🏥 13. System Appointments Overview
+
 <img width="1919" height="1000" alt="Image" src="https://github.com/user-attachments/assets/e763e7a7-7262-4a5b-9bed-373483dd2979" />
 
-### 📱 14. Responsive Layouts & Tables
+
 <img width="1919" height="1004" alt="Image" src="https://github.com/user-attachments/assets/62b59f5a-1bcc-4cd6-bbb0-748e4bad4501" />
 
 
