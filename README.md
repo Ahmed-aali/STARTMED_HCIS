@@ -3,10 +3,59 @@
 ## Project Overview
 
 **Start Med** is a professional healthcare management system built with:
-- **Frontend:** React.js (Modern UI, Responsive Design)
+- **Frontend:** React.js (Modern Glassmorphic UI, Responsive Design)
 - **Backend:** Node.js + Express.js (RESTful API)
 - **Database:** MongoDB (Document-based)
 - **Authentication:** JWT (JSON Web Tokens)
+- **Real-Time Video:** WebRTC & Socket.io for Video Consultations
+
+## 📸 Screenshots Gallery
+
+<!-- ضع الروابط التي نسختها من GitHub هنا بالأسفل 👇 -->
+
+### 🔐 1. Modern Authentication & Login
+<img width="1917" height="990" alt="Image" src="https://github.com/user-attachments/assets/88c25898-d200-41fe-b4ae-9abd896dc094" />
+
+### 🧑‍💼 2. Patient Dashboard Overview
+<img width="1919" height="992" alt="Image" src="https://github.com/user-attachments/assets/63f58e99-5aef-4d9d-a1f8-c177e2a93f94" />
+
+### 📅 3. Book an Appointment Interface
+<img width="1919" height="998" alt="Image" src="https://github.com/user-attachments/assets/79b9a1aa-799b-457f-b7c8-82b60b83db44" />
+
+### 📹 4. WebRTC Video Consultation Room
+<img width="1919" height="995" alt="Image" src="https://github.com/user-attachments/assets/bfbfbf5c-db77-47ff-9fb9-6eba123ebb1d" />
+
+### 🩺 5. Doctor Dashboard Overview
+<img width="1919" height="996" alt="Image" src="https://github.com/user-attachments/assets/438d61fd-bcc2-452e-8425-b7e90a12d35c" />
+
+### 📝 6. Interactive E-Prescription Form
+<img width="1919" height="1001" alt="Image" src="https://github.com/user-attachments/assets/bd78032d-ea82-4b13-a1a9-5368372cc11a" />
+
+### 📋 7. Clinical Medical Record Form
+<img width="1919" height="997" alt="Image" src="https://github.com/user-attachments/assets/abff9a55-b973-445b-951e-0164d648db5c" />
+
+### 💳 8. Patient Billing & Service Payment
+<img width="1918" height="996" alt="Image" src="https://github.com/user-attachments/assets/56eba5cf-c38c-4c4a-b88b-9185c8436a59" />
+
+### 📊 9. Admin Dashboard & Statistics
+<img width="1918" height="1003" alt="Image" src="https://github.com/user-attachments/assets/abf91c8f-6bd5-4312-857f-a503f9b60f05" />
+
+### 👨‍⚕️ 10. Admin: Doctor Verification
+<img width="1919" height="986" alt="Image" src="https://github.com/user-attachments/assets/b9c2802e-e252-4cb7-9af1-a03bff5f89b9" />
+
+### 💬 11. Intelligent Chatbot Assistant
+<img width="1919" height="995" alt="Image" src="https://github.com/user-attachments/assets/9d297377-68f1-43f1-95c9-757490711b40" />
+
+### ⚙️ 12. User Profile Management
+<img width="1919" height="994" alt="Image" src="https://github.com/user-attachments/assets/c730633a-3709-4d31-a313-f25c4d9b6435" />
+
+### 🏥 13. System Appointments Overview
+<img width="1919" height="1000" alt="Image" src="https://github.com/user-attachments/assets/e763e7a7-7262-4a5b-9bed-373483dd2979" />
+
+### 📱 14. Responsive Layouts & Tables
+<img width="1919" height="1004" alt="Image" src="https://github.com/user-attachments/assets/62b59f5a-1bcc-4cd6-bbb0-748e4bad4501" />
+
+<!-- ضع الروابط التي نسختها من GitHub هنا بالأعلى ☝️ -->
 
 ## Features
 
@@ -34,6 +83,9 @@
 - ✅ Monitor Appointments
 
 ### Bonus Features
+- ✅ **WebRTC Video Consultations** (Custom Peer-to-Peer Video Calls & Screen Sharing)
+- ✅ **Premium UI/UX** (Glassmorphism, Dynamic Gradients, Custom Animations)
+- ✅ **Interactive Clinical Forms** (Symptom Tagging, Dynamic Patient Search)
 - ✅ **AI-Free Chatbot** (Rule-based FAQs)
 - ✅ Responsive Design
 - ✅ Role-Based Access Control
