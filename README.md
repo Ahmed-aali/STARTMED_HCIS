@@ -19,7 +19,8 @@
 ### 🧑‍💼 2. Patient Dashboard Overview
 <img width="1919" height="992" alt="Image" src="https://github.com/user-attachments/assets/63f58e99-5aef-4d9d-a1f8-c177e2a93f94" />
 
-### 📅 3. Book an Appointment Interface
+👨‍⚕️ 10. Admin: Doctor Verification
+
 <img width="1919" height="998" alt="Image" src="https://github.com/user-attachments/assets/79b9a1aa-799b-457f-b7c8-82b60b83db44" />
 
 ### 📹 4. WebRTC Video Consultation Room
